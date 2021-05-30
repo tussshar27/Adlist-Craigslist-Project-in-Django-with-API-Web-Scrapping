@@ -3,6 +3,8 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="css/style.css">
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,51 +13,27 @@
 
 <body>
     {% block content %}
-    <h2 style="text-align: center;">{{ search | title}}</h2>
+    <h2 style="text-align: center;">Search result for: <b>{{ search | title}}</b> </h2>
 
     <div class="row">
+        {% for post in final_postings %}
         <div class="col s4">
-            <div class="card">
+            <div style="overflow: hidden;" class="card">
                 <div class="card-image">
-                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*">
-                    <span class="card-title">Card Title</span>
+                    <a href="{{post.1}}" target="_blank" rel="noopener noreferrer"><img src="{{post.3}}" width='300'
+                            height='300'></a>
+                    <a href="{{post.1}}" target="_blank" rel="noopener noreferrer"><span
+                            class="card-title">{{post.0}}</span></a>
                 </div>
                 <div class="card-content">
-                    <p>test</p>
+                    <p>Price: {{post.2}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="#">This is a link</a>
+                    <a href="{{post.1}}">VIEW LISTING</a>
                 </div>
             </div>
         </div>
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*">
-                    <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>test</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
-        <div class="col s4">
-            <div class="card">
-                <div class="card-image">
-                    <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/2022-chevrolet-corvette-z06-1607016574.jpg?crop=0.737xw:0.738xh;0.181xw,0.218xh&resize=640:*">
-                    <span class="card-title">Card Title</span>
-                </div>
-                <div class="card-content">
-                    <p>test</p>
-                </div>
-                <div class="card-action">
-                    <a href="#">This is a link</a>
-                </div>
-            </div>
-        </div>
+        {% endfor %}
     </div>
     {% endblock content %}
 </body>

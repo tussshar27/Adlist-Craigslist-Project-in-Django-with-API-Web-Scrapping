@@ -11,3 +11,13 @@ class Search(models.Model):
 
     def __str__(self):
         return self.search
+
+class Contact(models.Model):
+    username = models.CharField(max_length=255, null=True, blank=True)
+    email = models.EmailField(max_length=100, null=True, blank=True)
+    subject = models.CharField(max_length=500, null=True, blank=True)
+    desc = models.TextField(null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.username
